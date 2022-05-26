@@ -14,46 +14,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Todo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about">About us</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="/service" id="navbarDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Services
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Laptops</a></li>
-              <li><a class="dropdown-item" href="#">Phone</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Headphones</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+  
   <div class="container my-4">
     <h2 class="text-center">To-DO List</h2>
     
@@ -105,70 +66,7 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
-<script>
-
-  function getAndupdate(){
-    
-    console.log("adding to the list");
-    tit=document.getElementById("title").value;
-    desc=document.getElementById("description").value;
-    if (localStorage.getItem('itemJson')==null){
-      itemJsonArray=[];
-      itemJsonArray.push([tit,desc]);
-      localStorage.setItem('itemJson',JSON.stringify(itemJsonArray))
-}
-else{
-  itemJsonArrayStr=localStorage.getItem('itemJson')
-  itemJsonArray=JSON.parse(itemJsonArrayStr);
-  itemJsonArray.push([tit,desc]);
-  localStorage.setItem('itemJson',JSON.stringify(itemJsonArray))
-}
-update();
-  }
-function update(){
-  if (localStorage.getItem('itemJson')==null){
-                    itemJsonArray = []; 
-                    localStorage.setItem('itemJson', JSON.stringify(itemJsonArray))
-                } 
-                else{
-                    itemJsonArrayStr = localStorage.getItem('itemJson')
-                    itemJsonArray = JSON.parse(itemJsonArrayStr); 
-                }
-
-let tableBody= document.getElementById("tablebody");
-let str ="";
-itemJsonArray.forEach((element,index) => {
-str+=`
- <tr>
-            <th scope="row">${index+1}</th>
-            <td>${element[0]}</td>
-            <td>${element[1]}</td>
-            <td><button class="btn btn-primary" onclick="deleted(${index})">Delete</button></td>
-        </tr>  `;
-});
-tablebody.innerHTML=str
-}
-
-  add=document.getElementById("add");
-  add.addEventListener("click",getAndupdate)
-  update();
-  
-  function deleted(itemindex){
-    itemJsonArrayStr=localStorage.getItem('itemJson')
-  itemJsonArray=JSON.parse(itemJsonArrayStr);
-itemJsonArray.splice(itemindex,1)
-  localStorage.setItem('itemJson',JSON.stringify(itemJsonArray))
-  update();
-  }
-
-  function clearStorage(){
-                if (confirm("Do you areally want to clear?")){
-                console.log('Clearing the storage')
-                localStorage.clear();
-                update()
-                }
-            }
-</script>
+<script src="todo.js"></script>
 
 </body>
 
