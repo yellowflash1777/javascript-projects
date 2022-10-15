@@ -49,3 +49,10 @@ function math_calculator() {
   function input_number(num){
     document.getElementById("expression").value+=num;
 }
+function all_clear(){
+    document.getElementById("expression").value="";
+}
+function clear_last(){
+    var expression=document.getElementById("expression").value;
+    document.getElementById("expression").value=expression.substring(0,expression.length-1);
+}
