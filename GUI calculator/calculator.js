@@ -45,3 +45,7 @@ function math_calculator() {
       }
   
   }}
+
+  function input_number(num){
+    document.getElementById("expression").value+=num;
+}
